@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>채팅</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/index.js"></script>
+    <style>
+      li{
+        list-style: none;
+        width:90%;
+        padding:5px;
+        margin:auto;
+        margin-top:5px;
+        border-radius: 5px;
+        background-color: rgb(163, 148, 214)
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="chat">
+        <!-- 채팅 메시지 영역 -->
+      </div>
+      <div>
+        <input type="text" id="send_message" placeholder="메시지를 입력해주세요." onkeyup="check_enter()">
+        <button onclick="send()">전송</button>
+      </div>
+    </div>
+    <div id="ChatUser">
+      <h1>
+        접속자
+      </h1>
+      <div id="UserList">
+        <ul id=list>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

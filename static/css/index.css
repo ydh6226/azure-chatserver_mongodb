@@ -1,0 +1,89 @@
+/* 메인 */
+#main {
+  margin: 30px;
+  margin-top: 50px;
+  border-radius: 20px;
+  background-color: lightblue;
+  text-align: center;
+  width: 500px;
+  height: 800px;
+  float:left;
+}
+
+/*현재 사용자*/
+#ChatUser{
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 20px;
+  background-color: rgb(180, 224, 21);
+  text-align: center;
+  width: 300px;
+  height: 500px;
+  float:left;
+  overflow-y: auto;
+}
+
+/* 채팅 영역 */
+#chat {
+  height: 90%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+/* 접속 알림 */
+.connect {
+  width: 90%;
+  margin:auto;
+  margin-top: 10px;
+  background-color: aquamarine;
+  text-align: center;
+  padding:5px;
+  float:left;
+  margin-left:20px;
+  clear:both;
+}
+
+/* 접속 종료 알림 */
+.disconnect {
+  width: 90%;
+  margin:auto;
+  margin-top: 10px;
+  background-color: indianred;
+  text-align: center;
+  padding:5px;
+  float:left;
+  margin-left:20px;
+  clear:both;
+}
+
+/* 내가 보낸 메시지 */
+.me {
+  margin-top: 10px;
+  margin-right: 20px;
+  background-color: lemonchiffon;
+  border-radius: 5px;
+  padding:5px 10px 5px 10px;
+  float:right;
+  clear:both;
+}
+
+/* 상대방이 보낸 메시지 */
+.other {
+  margin-top: 10px;
+  margin-left: 20px;
+  float:left;
+  background-color: white;
+  border-radius: 5px;
+  padding:5px 10px 5px 10px;
+  text-align: left;
+  margin-top: 10px;
+  clear:both;
+}
+
+#list{
+  list-style: none;
+  width:90%;
+  padding:5px;
+  margin:auto;
+  font-weight: bold;
+}
