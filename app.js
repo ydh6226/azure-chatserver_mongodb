@@ -8,14 +8,16 @@ var fs =require('fs')
 
 var array=new Array()
 
-var MongoClient=require('mongodb').MongoClient
-var url='mongodb://localhost:27017/testcl'
-var database
+var db_name='PINCHAT'
+var collection_name='chatLog'
 var collect
+var MongoClient=require('mongodb').MongoClient
+var url=`mongodb://pincosmos:PbLRXeKl2lWnfE9KHZUASksVpLjYh4H2RD4qYyxEggocF6dRzLzNFYAXg4dPFZzUd8MI8BKZ7H68mepu1Yha1Q==@pincosmos.documents.azure.com:10255/${db_name}?ssl=true&replicaSet=globaldb`
+
 
 function on_insert(err,docs){
     if(err){
-        console.log('DB insert error')
+        console.log('DB insert error'+' -> '+err)
     }else{
         console.log('DB insert success')
     }
@@ -46,7 +48,7 @@ io.sockets.on('connection',function(socket){
         socket.name=name
 
         io.sockets.emit('update',{type:'connect',name:'SERVER',message:name+'님이 접속하였습니다'})
-        collect.insert({time:new Date(),type:'connect',name:'server',message:name+'접속'},on_insert)
+        collect.insert({type:'connect',name:'server',message:name+'접속'},on_insert)
     
     })
 
@@ -54,7 +56,7 @@ io.sockets.on('connection',function(socket){
         data.name = socket.name
         console.log(data)
         socket.broadcast.emit('update', data)
-        collect.insert({time:new Date(),type:'disconnect',name:data.name,message:data.message},on_insert)
+        collect.insert({type:'disconnect',name:data.name,message:data.message},on_insert)
 
     })
 
@@ -62,7 +64,7 @@ io.sockets.on('connection',function(socket){
     socket.on('disconnect',function(){
         console.log(socket.name+'님이 나가셨습니다')
 
-        collect.insert({time:new Date(),type:'disconnect',name:'server',message:socket.name+'퇴장'},on_insert)
+        collect.insert({type:'disconnect',name:'server',message:socket.name+'퇴장'},on_insert)
 
         //접속자 제거
         var index=array.indexOf(socket.name)
@@ -91,8 +93,7 @@ server.listen(3000,function(){
             return
         }
     
-        database=db
-        collect=database.collection('testcl')
+        collect=db.collection(collection_name)
     })
 
 })
